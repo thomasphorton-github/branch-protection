@@ -26,8 +26,6 @@ async function main() {
   });
 
   app.post('/', async (req, res) => {
-
-    let checkName = req.body.check_run.name;
  
     res.sendStatus(200);
         
