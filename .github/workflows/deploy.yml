@@ -15,6 +15,15 @@ jobs:
         run: |
           # Add your deployment script here
           echo "Deploying to production"
+
+          gh api \
+            --method POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            /repos/thomasphorton-github/branch-protection/deployments \
+            -f ref='topic-branch' \
+            -f payload='{ "deploy": "migrate" }' \
+            -f description='Deploy request from hubot' 
     environment:
       name: production
       url: https://example.com
